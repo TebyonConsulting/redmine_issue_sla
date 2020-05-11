@@ -1,13 +1,17 @@
-es:
-  project_module_redmine_issue_sla: SLA de peticiones
-  label_issue_sla: SLA peticiones
-  field_first_expiration_date: Primera respuesta
-  field_close_expiration_date: Resolución
+  
+# Sample plugin
+en:
+  project_module_redmine_issue_sla: Issues SLA
+  label_issue_sla: Issues SLA
+  field_first_expiration_date: Assignament
+  field_close_expiration_date: Resolution
   field_expiration: field_expiration
-  field_issue_sla: SLA de peticiones
+  field_issue_sla: Issues SLA
   field_update_by_manager_date: Updated by manager
-  expiration_status_overdue: Excedido
-  expiration_status_replied: Cumplido
-  expiration_status_expires_in_x_time: Faltan %{value}
-  expiration_status_x_time_overdue: '%{value} excedido'
-  expiration_status_replied_in_x_time: Cumplido en %{value}
+  expiration_status_overdue: Overdue
+  expiration_status_replied: Compliment
+  expiration_status_expires_in_x_time: Missing %{value}
+  expiration_status_x_time_overdue: '%{value} Overdue'
+  expiration_status_replied_in_x_time: Compliment on %{value}
+  field_first_delay: Assignament time
+  field_close_delay: Compliment time
