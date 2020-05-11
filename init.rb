@@ -4,9 +4,9 @@ require 'redmine'
 
 Redmine::Plugin.register :redmine_issue_sla do
   name 'Redmine Issue SLA'
-  author 'Ricardo Santos'
+  author 'Ricardo Santos & Sebastián Labonia'
   description 'Show SLA information for support tickets'
-  version '1.0.0'
+  version '2.0.0'
   requires_redmine :version_or_higher => '3.0.0'
 
   project_module :redmine_issue_sla do

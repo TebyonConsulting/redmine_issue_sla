@@ -2,18 +2,34 @@
 class IssueSlasController < ApplicationController
   unloadable
 
-  before_filter :find_project_by_project_id
-  before_filter :authorize, :only => [:update]
+  before_action :find_project_by_project_id
+  before_action :authorize, :only => [:update]
+
+
+#{}"issue_sla"=>{"1"=>{"first_delay"=>"1", "close_delay"=>"2"},
+ #             "2"=>{"first_delay"=>"", "close_delay"=>""},
+ #             "3"=>{"first_delay"=>"", "close_delay"=>""},
+ #             "4"=>{"first_delay"=>"", "close_delay"=>""},
+ #             "16"=>{"first_delay"=>"", "close_delay"=>""}
+ #           }
 
   def update
-    params[:issue_sla].each do |priority_id, allowed_delay|
-      issue_sla = @project.issue_slas.find_by_priority_id(priority_id)
-      if allowed_delay.present?
-        issue_sla.allowed_delay = allowed_delay.to_f
+    params[:issue_sla].each do |sla, data|
+      new_issue_sla = @project.issue_slas.find_by_priority_id(sla)
+
+      if data['first_delay'].present?
+        new_issue_sla.first_delay = data['first_delay'].to_f
       else
-        issue_sla.allowed_delay = nil
+        new_issue_sla.first_delay = nil
       end
-      issue_sla.save
+
+      if data['close_delay'].present?
+        new_issue_sla.close_delay = data['close_delay'].to_f
+      else
+        new_issue_sla.close_delay = nil
+      end
+      
+      new_issue_sla.save
     end
     
     flash[:notice] = l(:notice_successful_update)
